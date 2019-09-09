@@ -1,3 +1,6 @@
+import time
+import random
+
 def insertion_sort(arr):
     for k in range(1, len(arr)):
         cur = arr[k]
@@ -21,16 +24,41 @@ def selection_sort(arr):
             j += 1
         # replace current card with the minimum, unless they are the same number/card
         if cur_min != cur:
-            swap_ind = arr.index(cur_min)
+            min_index = arr.index(cur_min)
             arr[k] = cur_min
-            arr[swap_ind] = cur
-
+            arr[min_index] = cur
 
 a = [4, -2, 8, -1]
-selection_sort(a)
-print(a)
 
+def increasing_populate(cell_num):
+    increasing = []
+    for k in range(cell_num):
+        increasing.append(k)
+    return increasing
+
+def decreasing_populate(cell_num):
+    decreasing = []
+    for k in range(cell_num, 0, -1):
+        decreasing.append(k)
+    return decreasing
+
+print(increasing_populate(40))
+print(decreasing_populate(40))
 
 # if __name__ == '__main__':
-# main section here,
-# within this big conditional
+#   start = time.process_time()
+#   insertion_sort(increasing)
+#   print('Ten Thousand Increasing Insertion: ' + '{:.6f}'.format(end-start))
+#   insertion_sort(decreasing)
+#   insertion_sort(random)
+#   end = time.process_time() 
+#   start = time.process_time()
+#   selection_sort(a)
+#   selection_sort(increasing)
+#   selection_sort(decreasing)
+#   selection_sort(random)
+#   end = time.process_time() 
+
+#   start = time.process_time()
+#   insertion_sort(a)
+#   end = time.process_time()
