@@ -54,42 +54,60 @@ def random_populate(cell_num):
     return rand_array
 
 
-def create_testing_arrays():
-    increasing_arrays = []
-    decreasing_arrays = []
-    random_arrays = []
-    # Organize all the 15 arrays into higher-level arrays by type of array, then put those 3 arrays (since there are 3 types) into 1 array containing them
-    for k in [1000, 2500, 5000, 7500, 10000]:
-        increasing_arrays.append(increasing_populate(k))
-        decreasing_arrays.append(decreasing_populate(k))
-        random_arrays.append(random_populate(k))
-    return [increasing_arrays, decreasing_arrays, random_arrays]
+def insertion_sort_increasing():
+    start = time.process_time()
+    insertion_sort(increasing_populate(1000))
+    end = time.process_time()
+    print('One Thousand Increasing Insertion: ' + '{:.6f}'.format(end - start))
+
+    start = time.process_time()
+    insertion_sort(increasing_populate(2500))
+    end = time.process_time()
+    print('Two Thousand Five Hundred Increasing Insertion: ' + '{:.6f}'.format(end - start))
+
+    start = time.process_time()
+    insertion_sort(increasing_populate(5000))
+    end = time.process_time()
+    print('Five Thousand Increasing Insertion: ' + '{:.6f}'.format(end - start))
+
+    start = time.process_time()
+    insertion_sort(increasing_populate(7500))
+    end = time.process_time()
+    print('Seven Thousand Five Hundred Increasing Insertion: ' + '{:.6f}'.format(end - start))
+
+    start = time.process_time()
+    insertion_sort(increasing_populate(10000))
+    end = time.process_time()
+    print('Ten Thousand Increasing Insertion: ' + '{:.6f}'.format(end - start))
 
 
-def test_sorting_times(sorting_method):
-    # Sets up string interpolation
-    array_type_names = ['Increasing', 'Decreasing', 'Random']
-    if sorting_method == insertion_sort:
-        sorting_method_name = 'Insertion'
-    if sorting_method == selection_sort:
-        sorting_method_name = 'Selection'
-    # for each array_type(incr/dec/rand), find the time it takes to be sorted
-    for array_type in range(3):
-        for k in range(5):
-            start = time.process_time()
-            sorting_method(testing_arrays[array_type][k])
-            end = time.process_time()
-            # Sets up cell number in string interpolation
-            if k == 0:
-                k = 1000
-            else:
-                k *= 2500
-            print(
-                f'{k} Cells {array_type_names[array_type]} {sorting_method_name}: ' + '{:.6f}'.format(end-start))
+def selection_sort_increasing():
+    start = time.process_time()
+    selection_sort(increasing_populate(1000))
+    end = time.process_time()
+    print('One Thousand Increasing Selection: ' + '{:.6f}'.format(end-start))
+
+    start = time.process_time()
+    selection_sort(increasing_populate(2500))
+    end = time.process_time()
+    print('Two Thousand Five Hundred Increasing Selection: ' + '{:.6f}'.format(end-start))
+
+    start = time.process_time()
+    selection_sort(increasing_populate(5000))
+    end = time.process_time()
+    print('Five Thousand Increasing Selection: ' + '{:.6f}'.format(end-start))
+
+    start = time.process_time()
+    selection_sort(increasing_populate(7500))
+    end = time.process_time()
+    print('Seven Thousand Five Hundred Increasing Selection: ' + '{:.6f}'.format(end - start))
+
+    start = time.process_time()
+    selection_sort(increasing_populate(10000))
+    end = time.process_time()
+    print('Ten Thousand Increasing Selection: ' + '{:.6f}'.format(end - start))
 
 
 if __name__ == '__main__':
-    testing_arrays = create_testing_arrays()
-
-    test_sorting_times(insertion_sort)
-    test_sorting_times(selection_sort)
+    insertion_sort_increasing()
+    selection_sort_increasing()
